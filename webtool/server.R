@@ -25,7 +25,7 @@ function(input, output, session) {
     geom_point() +
     geom_hline(yintercept = 0) +
     scale_y_continuous(label = comma_format(accuracy = 1)) +
-    scale_x_datetime(limits = as.POSIXct(c("2020/11/05", "2020/11/07")),
+    scale_x_datetime(limits = as.POSIXct(c("2020/11/05", "2020/11/08")),
                      labels = date_format("%a-%d\n%H:%M", tz = "America/New_York" )) +
     scale_colour_manual(values = us_pal) +
     labs(x = "Time data published (US Eastern Standard Time)",
