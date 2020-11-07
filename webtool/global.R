@@ -2,6 +2,9 @@ library(shiny)
 library(ggplot2)
 library(readr)
 library(scales)
+library(dplyr)
+library(glue)
+library(DT)
 
 my_theme <- theme_light() + 
   theme(legend.position = "bottom") +

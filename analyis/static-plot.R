@@ -1,6 +1,7 @@
 source("setup.R")
 
 d <- load_data()
+
 latest_data <-  date_format("%A %d %B %H:%M", tz = "America/New_York" )(
   max(d$timestamp)
 )
