@@ -10,9 +10,13 @@ function(input, output, session) {
   })
 
   the_data <- reactive({
-    tmp <- data.frame()
-    for(s in input$states){
-      tmp <- rbind(tmp, subset(nyt_data(), grepl(s, state)))
+    if(is.null(input$states)){
+     tmp <- nyt_data() 
+    } else {
+      tmp <- data.frame()
+      for(s in input$states){
+        tmp <- rbind(tmp, subset(nyt_data(), grepl(s, state)))
+      }
     }
     return(tmp)
     }) 
