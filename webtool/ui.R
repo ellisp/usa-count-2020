@@ -10,7 +10,14 @@ fluidPage(
                               "Georgia", "Pennsylvania",
                               "North Carolina", "Alaska"),
                   selected = c("Georgia", "Pennsylvania")),
-      actionButton("reload", "Reload data")
+      actionButton("reload", "Reload data"),
+      hr(),
+      div(
+        HTML(
+          "<p>Data from the New York Times, as collected by <a href='https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html'>
+          this unofficial open source app</a> by 'Alex' and friends.</p>"
+        )
+      )
     ),
     
     mainPanel(

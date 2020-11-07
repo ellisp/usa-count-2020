@@ -65,6 +65,7 @@ function(input, output, session) {
   
   output$table <- renderDataTable(the_table(), 
                                   filter = "none",
+                                  rownames = FALSE,
                                   options = list(
                                     paging = FALSE,
                                     searching = FALSE,
