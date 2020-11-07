@@ -13,7 +13,7 @@ fluidPage(
     ),
     
     mainPanel(
-      plotlyOutput("facet_line_plot")
+      plotOutput("facet_line_plot", height = "600px")
     )
   )
 )

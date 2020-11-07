@@ -15,24 +15,25 @@ function(input, output, session) {
     return(tmp)
     }) 
   
-  p <- reactive({
-    ggplot(the_data(), 
+  facet_line_plot <- reactive({
+    p <- ggplot(the_data(), 
               aes(x = timestamp, 
-                  y = vote_differential, 
-                  colour = leading_candidate_name)) +
+                  y = vote_differential)) +
     facet_wrap(~state, scales = "free_y", nrow = 2) +
-    geom_smooth(method = "gam", fullrange = TRUE) +
-    geom_point() +
+    geom_smooth(method = "gam", colour = "black") +
+    geom_point(aes(colour = leading_candidate_name)) +
     geom_hline(yintercept = 0) +
     scale_y_continuous(label = comma_format(accuracy = 1)) +
-    scale_x_datetime(limits = as.POSIXct(c("2020/11/05", "2020/11/08")),
-                     labels = date_format("%a-%d\n%H:%M", tz = "America/New_York" )) +
+    scale_x_datetime(labels = date_format("%a-%d\n%H:%M", tz = "America/New_York" )) +
     scale_colour_manual(values = us_pal) +
     labs(x = "Time data published (US Eastern Standard Time)",
          y = "Number of votes leading by",
-         colour = "Currently leading candidate") +
-    theme(legend.position = "bottom")
+         colour = "Currently leading candidate") 
+    
+    return(p)
+    
+    
   })
   
-  output$facet_line_plot <- renderPlotly(p())
+  output$facet_line_plot <- renderPlot(facet_line_plot(), res = 100)
 }
